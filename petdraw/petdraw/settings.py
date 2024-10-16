@@ -70,7 +70,7 @@ TEMPLATES = [
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 
 WSGI_APPLICATION = 'petdraw.wsgi.application'
 
@@ -116,11 +116,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Путь, куда будут собираться статические файлы
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+# Дополнительные директории для поиска статических файлов
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Убедитесь, что этот путь соответствует вашей структуре проекта
+    os.path.join(BASE_DIR, 'build', 'static'),  # Если фронтенд собирается в build/static
+]
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

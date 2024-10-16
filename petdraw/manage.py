@@ -4,7 +4,9 @@ import os
 import sys
 
 #python manage.py runserver
-#iopaint start --model=lama --device=cpu --port=8080
+#iopaint start --model=lama --device=cpu --port=5000
+#python manage.py collectstatic
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'petdraw.settings')
