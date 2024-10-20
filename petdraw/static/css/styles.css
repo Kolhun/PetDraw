@@ -1,50 +1,199 @@
+/* Общие настройки для всей страницы */
 body {
-    font-family: Arial, sans-serif;
+    background-color: #fff7e6; /* Светло-желтый фон */
+    color: #333; /* Темный текст */
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
+
+/* Стили для header */
 header {
-    background-color: #4CAF50;
+    background-color: #ffcc80;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+header a {
     color: white;
-    padding: 15px;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Навигация */
+nav {
+    background-color: #ff8c00;
     text-align: center;
 }
 
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Основной контент */
 main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px; /* Уменьшил отступ для более компактного расположения */
+    flex: 1; /* Контент растягивается */
+    padding: 20px;
+}
+
+
+/* Стили для footer */
+footer {
+    background-color: #ff8c00;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Центрирование основного контента */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center; /* Центрирование содержимого */
+}
+
+/* Заголовки */
+h1, h2, h3 {
+    color: #ffa500;
+}
+
+/* Стили для форм */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ff8c00;
+}
+
+input[type="text"], input[type="password"], input[type="number"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
-.iopaint-container {
-    width: 800px; /* Задаем ширину 800px */
-    height: 600px; /* Задаем высоту 600px */
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.success-message {
+    color: green;
 }
 
-footer {
-    background-color: #f1f1f1;
-    color: #333;
-    text-align: center;
-    padding: 10px;
+.error-message {
+    color: red;
+    size: 14px;
 }
 
-@media (max-width: 768px) {
-    main {
-        padding: 10px; /* Уменьшенный отступ для мобильных устройств */
-    }
-    .iopaint-container {
-        width: 100%; /* Полная ширина для мобильных устройств */
-        height: 400px; /* Высота 400px для мобильных устройств */
-    }
+
+input[type="submit"] {
+    background-color: #ffa500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff8c00;
+}
+
+/* Стили для ссылок */
+a {
+    color: #ff8c00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Центрирование формы регистрации и авторизации */
+.registration-container, .login-container {
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.main-container {
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.registration-container h2, .login-container h2 {
+    margin-bottom: 20px;
+    color: #ff8c00;
+}
+
+button {
+    background-color: #ffa500; /* Оранжевый фон */
+    color: white; /* Белый текст */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Анимация смены фона */
+}
+
+/* Стиль кнопки при наведении */
+button:hover {
+    background-color: #ff8c00; /* Темно-оранжевый при наведении */
+}
+
+/* Стиль для неактивных кнопок */
+button:disabled {
+    background-color: #cccccc; /* Серый цвет для отключенной кнопки */
+    cursor: not-allowed;
+    color: #666666; /* Темно-серый текст */
+}
+
+/* Контейнеры по бокам страницы */
+.left-side, .right-side {
+    position: fixed;
+    top: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #ffcc80;
+    z-index: -1;
+}
+
+.left-side {
+    left: 0;
+}
+
+.right-side {
+    right: 0;
 }

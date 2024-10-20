@@ -1,0 +1,51 @@
+{% extends "back.html" %}
+
+{% block title %}PetDraw | Регистрация{% endblock %}
+
+{% block content %}
+
+<div class="registration-container">
+    {% if message %}
+        <p class="success-message">{{ message }}</p>
+        <p class="success-message">user = {{ user }}</p>
+    {% else %}
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="field-error">{{ form.name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {% if form.password.errors %}
+                    <div class="field-error">{{ form.password.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.repeat_password.label_tag }}
+                {{ form.repeat_password }}
+                {% if form.repeat_password.errors %}
+                    <div class="field-error">{{ form.repeat_password.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.age.label_tag }}
+                {{ form.age }}
+                {% if form.age.errors %}
+                    <div class="field-error">{{ form.age.errors }}</div>
+                {% endif %}
+            </div>
+            {% if error %}
+                <p class="error-message">*{{ error }}</p>
+            {% endif %}
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    {% endif %}
+</div>
+
+
+{% endblock %}

@@ -3,6 +3,9 @@
 import os
 import sys
 
+
+# python manage.py makemigrations
+# python manage.py migrate
 #python manage.py runserver
 #iopaint start --model=lama --device=cpu --port=8080
 def main():
