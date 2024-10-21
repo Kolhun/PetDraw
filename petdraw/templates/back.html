@@ -11,13 +11,14 @@
         <h1 style="color: white">PetDraw с поддержкой IOPaint</h1>
         <div class="auth-links">
             <a href="{% url 'home' %}" class="button">Главная</a>
-            <span>|</span>
-            <a href="{% url 'login' %}" class="button">Войти</a>
-            <span>|</span>
-            <a href="{% url 'register' %}" class="button">Регистрация</a>
             {% if user.is_authenticated %}
-                <span>-</span>
+                <span>|</span>
                 <a href="{% url 'logout' %}" class="button">Выйти</a>
+            {% else %}
+                <span>|</span>
+                <a href="{% url 'login' %}" class="button">Войти</a>
+                <span>|</span>
+                <a href="{% url 'register' %}" class="button">Регистрация</a>
             {% endif %}
         </div>
         {% if user.is_authenticated %}
