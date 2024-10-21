@@ -39,72 +39,46 @@ def sign_up_by_html(request):
             elif password != repeat_password:
                 info['error'] = 'Пароли не совпадают'
             elif not age.isdigit() or int(age) < 18:
-                info['error'] = 'Вы должны быть старше 18'
+                info['error'] = 'Вы должны быть старше 18 лет'
             elif Users.objects.filter(name=name).exists():
                 info['error'] = 'Пользователь с таким именем уже существует'
             else:
-                #user = Users.objects.create(name=name, password=password, age=age)
+                # Создание пользователя
                 user = Users(name=name, age=age, balance=10)
-                user.set_password(password)
+                user.set_password(password)  # Устанавливаем хешированный пароль
                 user.save()
-                message = f"Приветствуем, {name}! Регистрация успешна завершена."
-                user = authenticate(username=user.name, password=user.password)
-                info['user'] = user
-                print(f"user {user}")
+
+                message = f"Приветствуем, {name}! Регистрация успешно завершена."
+
+                # Аутентификация пользователя по оригинальному паролю
+                user = authenticate(request, username=name, password=password)
+                print(f"user registration {user}, name {name}, password {password},")
                 if user is not None:
-                    login(request, user)
+                    login(request, user)  # Вход пользователя в систему
+                    return redirect('home')  # Перенаправление на главную страницу
+                else:
+                    info['error'] = 'Ошибка при аутентификации'
     else:
         form = UserRegister()
+
     info['form'] = form
-    users = Users.objects.all()
     if message:
         info['message'] = message
     return render(request, 'registration.html', context=info)
-
-
-# def sign_up_by_django(request):
-#     info = {}
-#     message = ''
-#
-#     if request.method == 'POST':
-#         form = BuyerForms(request.POST)
-#         if form.is_valid():
-#             name = form.cleaned_data['name']
-#             # password = form.cleaned_data['password']
-#             # repeat_password = form.cleaned_data['repeat_password']
-#             age = form.cleaned_data['age']
-#
-#             if age < 18:
-#                 info['error'] = 'Вы должны быть старше 18'
-#             elif Buyer.objects.filter(name=name).exists():
-#                 info['error'] = 'Пользователь уже существует'
-#             else:
-#                 Buyer.objects.create(name=name, age=age)
-#                 message = f"Приветствуем, {name}!"
-#         else:
-#             info['error'] = 'Некорректные данные формы'
-#     else:
-#         form = BuyerForms()
-#
-#     info['form'] = form
-#     byers = Buyer.objects.all()
-#     info['Buyer'] = byers
-#     if message:
-#         info['message'] = message
-#     return render(request, 'four_task/registration_page.html', info)
-
 def log_in(request):
     error = None
     if request.method == 'POST':
-        username = request.POST['name']
-        password = request.POST['password']
+        username = request.POST['name'].strip()
+        password = request.POST['password'].strip()
+
+        # Аутентификация пользователя
         user = authenticate(request, username=username, password=password)
 
-        print(f"user {user}, name {username}, password {password}")
+        print(f"user login {user}, name {username}, password {password}")
 
         if user is not None:
-            login(request, user)
-            return redirect('home')
+            login(request, user)  # Вход пользователя
+            return redirect('home')  # Перенаправление на главную страницу
         else:
             error = "Неверное имя пользователя или пароль"
 

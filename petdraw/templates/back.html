@@ -15,11 +15,13 @@
             <a href="{% url 'login' %}" class="button">Войти</a>
             <span>|</span>
             <a href="{% url 'register' %}" class="button">Регистрация</a>
-            <span>-</span>
-            <a href="{% url 'logout' %}" class="button">Выйти</a>
+            {% if user.is_authenticated %}
+                <span>-</span>
+                <a href="{% url 'logout' %}" class="button">Выйти</a>
+            {% endif %}
         </div>
         {% if user.is_authenticated %}
-            <p>{{ user.username }} | {{ user.balance }}</p>
+            <p>{{ user.name }} | Баланс: {{ user.balance }} коинов</p>
         {% endif %}
     </header>
     <nav></nav>

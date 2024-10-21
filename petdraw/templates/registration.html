@@ -8,6 +8,9 @@
     {% if message %}
         <p class="success-message">{{ message }}</p>
         <p class="success-message">user = {{ user }}</p>
+        <div class="auth-links">
+            <a href="{% url 'home' %}" class="button">На главную</a>
+        </div>
     {% else %}
         <form method="post" action="">
             {% csrf_token %}

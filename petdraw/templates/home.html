@@ -6,13 +6,11 @@
 <div class="container">
     <h2>Добро пожаловать в PetDraw!</h2>
     {% if user.is_authenticated %}
-        <p>Привет, {{ user.username }}!</p>
-        <a href="{% url 'logout' %}" class="button">Выйти</a>
+        <p>С Возвращением, {{ user.name }}!</p>
         <div class="iopaint-container">
-            <iframe src="http://localhost:8080/" title="IOPaint Canvas" width="800px" height="600px" frameborder="0"></iframe>
+            <iframe src="http://localhost:5000/" title="IOPaint Canvas" width="800px" height="600px" frameborder="0"></iframe>
         </div>
     {% else %}
-        <p>Привет, {{ user.is_authenticated }}!</p>
         <p>
             Привет! Чтобы начать пользоваться нашим сервисом по удалению лишних элементов с фотографий с помощью искусственного интеллекта,
             вам необходимо <strong>зарегистрироваться</strong> или <strong>авторизоваться</strong>. Перейдите по одной из ссылок ниже:

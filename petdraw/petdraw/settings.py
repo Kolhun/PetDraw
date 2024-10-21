@@ -68,9 +68,13 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'main.Users'
+
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATICFILES_DIRS = [BASE_DIR / "static",]
+
 
 WSGI_APPLICATION = 'petdraw.wsgi.application'
 
