@@ -1,4 +1,9 @@
 from django.contrib import admin
-from .models import Drawing
+from .models import Users
 
-admin.site.register(Drawing)
+
+@admin.register(Users)
+class UsersAdmin(admin.ModelAdmin):
+    list_display = ('name', 'balance', 'age')
+    search_fields = ('name',)
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1 style="color: white">PetDraw с поддержкой IOPaint</h1>
+        <div class="auth-links">
+            <a href="{% url 'home' %}" class="button">Главная</a>
+            <span>|</span>
+            <a href="{% url 'login' %}" class="button">Войти</a>
+            <span>|</span>
+            <a href="{% url 'register' %}" class="button">Регистрация</a>
+            <span>-</span>
+            <a href="{% url 'logout' %}" class="button">Выйти</a>
+        </div>
+        {% if user.is_authenticated %}
+            <p>{{ user.username }} | {{ user.balance }}</p>
+        {% endif %}
+    </header>
+    <nav></nav>
+    <aside></aside>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 PetDraw</p>
+    </footer>
+</body>
+</html>
