@@ -126,7 +126,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.registration-container, .login-container {
+.registration-container, .login-container, .other-container{
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -147,7 +147,7 @@ a:hover {
     max-width: 400px;
 }
 
-.registration-container h2, .login-container h2 {
+.registration-container h2, .login-container h2, .other-container h2{
     margin-bottom: 20px;
     color: #ff8c00;
 }

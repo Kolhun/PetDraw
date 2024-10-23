@@ -7,10 +7,11 @@
 
     <h2>Профиль: {{ user.username }}</h2>
 
-    <a href="" class="btn">Сменить пароль</a>
+    <a href="{% url 'pass_edit' %}" class="btn">Сменить пароль</a>
 
     <p><strong>Логин:</strong> {{ user.username }}</p>
     <p><strong>Имя:</strong> {{ user.name }}</p>
+    <p><strong>Баланс:</strong> {{ user.balance }} коинов</p>
     <p><strong>Возраст:</strong> {{ user.age }}</p>
 
 </div>
