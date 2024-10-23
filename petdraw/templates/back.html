@@ -13,6 +13,8 @@
             <a href="{% url 'home' %}" class="button">Главная</a>
             {% if user.is_authenticated %}
                 <span>|</span>
+                <a href="{% url 'profile' %}" class="button">Мой профиль</a>
+                <span>|</span>
                 <a href="{% url 'logout' %}" class="button">Выйти</a>
             {% else %}
                 <span>|</span>

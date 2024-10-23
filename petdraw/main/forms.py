@@ -4,10 +4,15 @@ from django import forms
 
 
 class UserRegister(forms.Form):
-    name = forms.CharField(
+    username = forms.CharField(
         label="Введите логин",
         max_length=30,
         widget=forms.TextInput(attrs={'placeholder': 'Логин'})
+    )
+    name = forms.CharField(
+        label="Введите отображаемое имя",
+        max_length=30,
+        widget=forms.TextInput(attrs={'placeholder': 'Имя'})
     )
     password = forms.CharField(
         label="Введите пароль",

@@ -11,9 +11,9 @@ def home(request):
 
 
 def index(request):
-    byers = Users.objects.all()
+    users = Users.objects.all()
     context = {
-        "Users": byers,
+        "Users": users,
     }
     return render(request, 'four_task/index.html', context)
 
@@ -26,6 +26,7 @@ def sign_up_by_html(request):
         form = UserRegister(request.POST)
         if form.is_valid():
             name = request.POST.get('name', '').strip()
+            username = request.POST.get('username', '').strip()
             password = request.POST.get('password', '').strip()
             repeat_password = request.POST.get('repeat_password', '').strip()
             age = request.POST.get('age', '').strip()
@@ -38,18 +39,18 @@ def sign_up_by_html(request):
                 info['error'] = 'Пароли не совпадают'
             elif not age.isdigit() or int(age) < 18:
                 info['error'] = 'Вы должны быть старше 18 лет'
-            elif Users.objects.filter(name=name).exists():
+            elif Users.objects.filter(username=username).exists():
                 info['error'] = 'Пользователь с таким именем уже существует'
             else:
 
-                user = Users(name=name, age=age, balance=10)
+                user = Users(username=username, name=name, age=age, balance=10)
                 user.set_password(password)
                 user.save()
 
                 message = f"Приветствуем, {name}! Регистрация успешно завершена."
 
-                user = authenticate(request, username=name, password=password)
-                print(f"user registration {user}, name {name}, password {password},")
+                user = authenticate(request, username=username, password=password)
+                print(f"user registration {user}, name {username}, password {password},")
                 if user is not None:
                     login(request, user)
                     return redirect('home')
@@ -67,7 +68,7 @@ def sign_up_by_html(request):
 def log_in(request):
     error = None
     if request.method == 'POST':
-        username = request.POST['name'].strip()
+        username = request.POST['username'].strip()
         password = request.POST['password'].strip()
 
         user = authenticate(request, username=username, password=password)
@@ -83,9 +84,13 @@ def log_in(request):
     return render(request, 'login.html', {'error': error})
 
 
+def profile(request):
+    return render(request, 'profile.html')
+
+
 def log_out(request):
     logout(request)
-    return redirect('/main')
+    return render(request, 'logout.html')
 
 
 def return_to_home(request):

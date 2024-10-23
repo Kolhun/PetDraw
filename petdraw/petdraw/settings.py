@@ -73,7 +73,6 @@ AUTH_USER_MODEL = 'main.Users'
 STATIC_URL = '/static/'
 
 
-STATICFILES_DIRS = [BASE_DIR / "static",]
 
 
 WSGI_APPLICATION = 'petdraw.wsgi.application'
@@ -120,13 +119,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Путь, куда будут собираться статические файлы
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Дополнительные директории для поиска статических файлов
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Убедитесь, что этот путь соответствует вашей структуре проекта
-    os.path.join(BASE_DIR, 'build', 'static'),  # Если фронтенд собирается в build/static
+    os.path.join(BASE_DIR, 'static')
 ]
 
 

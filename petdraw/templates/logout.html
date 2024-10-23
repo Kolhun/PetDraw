@@ -1,0 +1,20 @@
+{% extends "back.html" %}
+
+{% block title %}PetDraw | Выход{% endblock %}
+
+{% block content %}
+
+<div class="login-container">
+    {% if user.is_authenticated == True %}
+        <script type="text/javascript">
+            window.location.href = "{% url '/main' %}";
+        </script>
+    {% else %}
+        <p>Вы успешно вышли из аккаунта. Ждём Вас вновь</p>
+        <div class="auth-links">
+            <a href="{% url 'home' %}" class="button">На главную</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

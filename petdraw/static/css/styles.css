@@ -1,7 +1,7 @@
-/* Общие настройки для всей страницы */
+
 body {
-    background-color: #fff7e6; /* Светло-желтый фон */
-    color: #333; /* Темный текст */
+    background-color: #fff7e6;
+    color: #333;
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -11,7 +11,6 @@ body {
 }
 
 
-/* Стили для header */
 header {
     background-color: #ffcc80;
     padding: 20px 0;
@@ -27,7 +26,7 @@ header a:hover {
     text-decoration: underline;
 }
 
-/* Навигация */
+
 nav {
     background-color: #ff8c00;
     text-align: center;
@@ -44,14 +43,14 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Основной контент */
+
 main {
-    flex: 1; /* Контент растягивается */
+    flex: 1;
     padding: 20px;
 }
 
 
-/* Стили для footer */
+
 footer {
     background-color: #ff8c00;
     color: white;
@@ -59,7 +58,7 @@ footer {
     padding: 15px 0;
 }
 
-/* Центрирование основного контента */
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -67,15 +66,14 @@ footer {
     background-color: #ffffff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    text-align: center; /* Центрирование содержимого */
+    text-align: center;
 }
 
-/* Заголовки */
+
 h1, h2, h3 {
     color: #ffa500;
 }
 
-/* Стили для форм */
 form {
     margin-top: 20px;
 }
@@ -119,7 +117,6 @@ input[type="submit"]:hover {
     background-color: #ff8c00;
 }
 
-/* Стили для ссылок */
 a {
     color: #ff8c00;
     text-decoration: none;
@@ -129,10 +126,9 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Центрирование формы регистрации и авторизации */
 .registration-container, .login-container {
     margin: 0 auto;
-    padding: 40px;
+    padding: 20px;
     background-color: #fff;
     border: 1px solid #eee;
     border-radius: 10px;
@@ -157,30 +153,29 @@ a:hover {
 }
 
 button {
-    background-color: #ffa500; /* Оранжевый фон */
-    color: white; /* Белый текст */
+    background-color: #ffa500;
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    transition: background-color 0.3s ease; /* Анимация смены фона */
+    transition: background-color 0.3s ease;
 }
 
-/* Стиль кнопки при наведении */
 button:hover {
-    background-color: #ff8c00; /* Темно-оранжевый при наведении */
+    background-color: #ff8c00;
 }
 
-/* Стиль для неактивных кнопок */
+
 button:disabled {
-    background-color: #cccccc; /* Серый цвет для отключенной кнопки */
+    background-color: #cccccc;
     cursor: not-allowed;
-    color: #666666; /* Темно-серый текст */
+    color: #666666;
 }
 
-/* Контейнеры по бокам страницы */
+
 .left-side, .right-side {
     position: fixed;
     top: 0;

@@ -7,13 +7,19 @@
 <div class="registration-container">
     {% if message %}
         <p class="success-message">{{ message }}</p>
-        <p class="success-message">user = {{ user }}</p>
         <div class="auth-links">
             <a href="{% url 'home' %}" class="button">На главную</a>
         </div>
     {% else %}
         <form method="post" action="">
             {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="field-error">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
             <div class="form-group">
                 {{ form.name.label_tag }}
                 {{ form.name }}
