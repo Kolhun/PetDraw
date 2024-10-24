@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.http import HttpResponse, HttpResponseNotFound
 from .forms import UserRegister
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from .models import *
 
 
@@ -64,31 +64,33 @@ def sign_up_by_html(request):
         info['message'] = message
     return render(request, 'registration.html', context=info)
 
+
 def pass_edit(request):
-    info = {}
+    info = {'error': '', 'message': ''}
+
     if request.method == 'POST':
-        form = UserRegister(request.POST)
-        if form.is_valid():
-            old_password = request.POST.get('old_password', '').strip()
-            new_password = request.POST.get('new_password', '').strip()
-            repeat_new_password = request.POST.get('password', '').strip()
+        old_password = request.POST.get('old_password', '').strip()
+        new_password = request.POST.get('new_password', '').strip()
+        repeat_new_password = request.POST.get('repeat_new_password', '').strip()
 
-            if not request.user.check_password(old_password):
-                info['error'] = 'Старый пароль не верен'
-            elif repeat_new_password != new_password:
-                info['error'] = 'Новый повторный пароль должен совпадать с новым'
-            elif not new_password:
-                info['error'] = 'Новый пароль должен быть заполнен'
-            elif not old_password:
-                info['error'] = 'Старый пароль должен быть заполнен'
-            else:
-                info['message'] = 'Пароль успешно изменён'
+        if not request.user.check_password(old_password):
+            info['error'] = 'Старый пароль не верен'
+        elif repeat_new_password != new_password:
+            info['error'] = 'Новый повторный пароль должен совпадать с новым'
+        elif not new_password:
+            info['error'] = 'Новый пароль должен быть заполнен'
+        elif not old_password:
+            info['error'] = 'Старый пароль должен быть заполнен'
+        else:
+            user = request.user
+            user.set_password(new_password)
+            user.save()
 
-                user = request.user
-                user.set_password(new_password)
-                user.save()
+            info['message'] = 'Пароль успешно изменён'
+            update_session_auth_hash(request, user)
 
     return render(request, 'pass_edit.html', context=info)
+
 
 def log_in(request):
     error = None
