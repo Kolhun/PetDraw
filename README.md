@@ -38,5 +38,6 @@ or Linux
 ```
 source .venv/bin/activate
 ```
+Then you can follow step 2 of the previous installation method
 # Other
 All models will be loaded automatically at startup. If you want to change the download directory, you can add --model-dir. Additional documentation can be found [here](https://www.iopaint.com/install/download_model)
