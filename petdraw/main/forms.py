@@ -2,6 +2,8 @@
 
 from django import forms
 
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField(label="Выберите изображение для обработки")
 
 class UserRegister(forms.Form):
     username = forms.CharField(

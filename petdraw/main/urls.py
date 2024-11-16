@@ -8,5 +8,7 @@ urlpatterns = [
     path('register', views.sign_up_by_html, name='register'),
     path('profile', views.profile, name='profile'),
     path('pass_edit', views.pass_edit, name='pass_edit'),
+    path('deletor', views.deletor, name='deletor'),
+    path('generator', views.vertex_texture_generator, name='generator'),
 
 ]
